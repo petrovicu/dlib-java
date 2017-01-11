@@ -6,8 +6,7 @@
  *
  *  Copyright (c) 2015 Tzutalin. All rights reserved.
  */
-#include <android/bitmap.h>
-#include <jni_common/jni_bitmap2mat.h>
+
 #include <jni_common/jni_primitives.h>
 #include <jni_common/jni_fileutils.h>
 #include <jni_common/jni_utils.h>
@@ -127,7 +126,8 @@ JNIEXPORT jobjectArray JNICALL
   LOG(INFO) << "det face size: " << size;
   return getDetectResult(env, detPtr, size);
 }
-
+ 
+/*
 JNIEXPORT jobjectArray JNICALL
     DLIB_FACE_JNI_METHOD(jniBitmapDetect)(JNIEnv* env, jobject thiz,
                                           jobject bitmap) {
@@ -146,7 +146,8 @@ JNIEXPORT jobjectArray JNICALL
   LOG(INFO) << "det face size: " << size;
   return getDetectResult(env, detPtr, size);
 }
-
+*/
+ 
 jint JNIEXPORT JNICALL DLIB_FACE_JNI_METHOD(jniInit)(JNIEnv* env, jobject thiz,
                                                      jstring jLandmarkPath) {
   LOG(INFO) << "jniInit";
