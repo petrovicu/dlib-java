@@ -1,21 +1,25 @@
-## Examples
+# [Youtube video](https://youtu.be/32i1ca8pcTg)
 
-[face_landmark_detection_ex.cpp](http://blog.dlib.net/2014/08/real-time-face-pose-estimation.html) is a real-time face pose estimation which dlib implement the paper, [One Millisecond Face Alignment with an Ensemble of Regression Trees by Vahid Kazemi and Josephine Sulliva](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CCEQFjAAahUKEwihnIDZg-nHAhWkGKYKHZh1Bbw&url=http%3A%2F%2Fwww.csc.kth.se%2F~vahidk%2Fpapers%2FKazemiCVPR14.pdf&usg=AFQjCNF2xdEKMOTLZ0wY5VilcpU8NgYH5w&sig2=SGYVK5pVrzn4-NB0sA9yIg)
+# How to run?
 
-Test it:
+OpenCV and dlib are required.
 
-`adb push $ROOT/data/shape_predictor_68_face_landmarks.dat /sdcard/`
+Copy haarcascade_frontalface_default.xml from OpenCV sources/data/haarcascades folder.
+Download shape_predictor_68_face_landmarks.dat from http://sourceforge.net/projects/dclib/files/dlib/v18.10/shape_predictor_68_face_landmarks.dat.bz2 and place in correct folder. 
 
-`adb push $ROOT/data/lena.bmp /sdcard/`
+After that FaceSwap should work. 
 
-`adb push libs/armeabi-v7a/face_landmark /data/local/tmp/`
+# How does it work?
 
-`adb shell /data/local/tmp/face_landmark /sdcard/shape_predictor_68_face_landmarks.dat /sdcard/lena.bmp`
+The algorithm searches until it finds two faces in the frame. Then it estimates facial landmarks using dlib face landmarks. Facial landmarks are used to "cut" the faces out of the frame and to estimate the transformation matrix used to move one face over the other.
 
-Result:
-```
-take 0.00635206 seconds
-number of parts: 68
-pixel position of first part:  (220, 269)
-pixel position of second part: (218, 298)
-```
+The faces are then color corrected using histogram matching and in the end the edges of the faces are feathered and blended in the original frame.
+
+# Result
+Before...
+
+[![Before](./images/before.jpg)](https://youtu.be/32i1ca8pcTg)
+
+After...
+
+[![After](./images/after.jpg)](https://youtu.be/32i1ca8pcTg)
