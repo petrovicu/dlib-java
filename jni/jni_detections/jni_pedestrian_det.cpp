@@ -6,8 +6,7 @@
  *
  *  Copyright (c) 2015 Tzutalin. All rights reserved.
  */
-#include <android/bitmap.h>
-#include <jni_common/jni_bitmap2mat.h>
+
 #include <jni_common/jni_primitives.h>
 #include <jni_common/jni_fileutils.h>
 #include <jni_common/jni_utils.h>
@@ -113,6 +112,7 @@ JNIEXPORT jobjectArray JNICALL
   return getDetRet(env, detPtr, size);
 }
 
+ /*
 JNIEXPORT jobjectArray JNICALL
     DLIB_JNI_METHOD(jniBitmapDetect)(JNIEnv* env, jobject thiz,
                                      jobject bitmap) {
@@ -126,6 +126,7 @@ JNIEXPORT jobjectArray JNICALL
   LOG(INFO) << "jniBitmapPeopleDet size: " << size;
   return getDetRet(env, detPtr, size);
 }
+*/
 
 jint JNIEXPORT JNICALL DLIB_JNI_METHOD(jniInit)(JNIEnv* env, jobject thiz) {
   LOG(INFO) << "jniInit";
